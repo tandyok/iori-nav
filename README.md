@@ -156,3 +156,7 @@
 -   **项目链接**: [https://github.com/jy02739244/iori-nav](https://github.com/jy02739244/iori-nav)
 
 <p align="center">如果你喜欢这个项目，请给它一个 ⭐️！</p>
+
+## 星星走起
+
+[![Star History Chart](https://api.star-history.com/svg?repos=jy02739244/iori-nav&type=date&legend=top-left)](https://www.star-history.com/#jy02739244/iori-nav&type=date&legend=top-left)
