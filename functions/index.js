@@ -364,10 +364,10 @@ export async function onRequest(context) {
     `;
   }).join('');
 
-  // Generate dynamic grid class
-  let gridClass = 'grid grid-cols-1 min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6';
+  // 生成动态网格类名 (移动端默认 2 列，gap-3)
+  let gridClass = 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6';
   if (layoutGridCols === '5') {
-      gridClass = 'grid grid-cols-1 min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6';
+      gridClass = 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6';
   }
 
   const datalistOptions = catalogs.map((cat) => `<option value="${escapeHTML(cat)}">`).join('');

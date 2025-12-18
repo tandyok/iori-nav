@@ -371,6 +371,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const catalogId = link.getAttribute('data-id');
     const catalogName = link.textContent.trim();
     
+    // 如果在移动端，点击后关闭侧边栏
+    if (typeof closeSidebarMenu === 'function') {
+        closeSidebarMenu();
+    }
+    
     // 视觉反馈
     const sitesGrid = document.getElementById('sitesGrid');
     if (!sitesGrid) return;
