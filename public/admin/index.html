@@ -275,6 +275,16 @@
                         </div>
                     </div>
 
+                    <!-- 字体资源设置 -->
+                    <div class="p-3 bg-gray-50 rounded border border-gray-100 mb-3">
+                        <h4 class="text-sm font-bold text-gray-700 mb-3 border-b border-gray-200 pb-1">自定义字体资源 (Global)</h4>
+                        <div>
+                            <label class="text-xs text-gray-500 block mb-1">字体 CSS 链接 (例如 Google Fonts / Adobe Fonts URL)</label>
+                            <input type="text" id="homeCustomFontUrl" placeholder="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" class="w-full text-sm p-2 border rounded">
+                            <p class="text-xs text-gray-400 mt-1">引入外部字体后，在下方"字体名称"中填入对应的 Font Family (如 'Noto Serif SC')。</p>
+                        </div>
+                    </div>
+
                     <!-- 标题设置 -->
                     <div class="p-3 bg-gray-50 rounded border border-gray-100">
                         <h4 class="text-sm font-bold text-gray-700 mb-3 border-b border-gray-200 pb-1">主标题 & 副标题</h4>
@@ -286,7 +296,7 @@
                                 <span class="slider round"></span>
                             </label>
                         </div>
-                        <div class="flex gap-2 mb-4 items-center">
+                        <div class="flex gap-2 mb-2 items-center">
                              <div class="flex-1">
                                 <label class="text-xs text-gray-500 block mb-1">字体大小 (px)</label>
                                 <input type="number" id="homeTitleSize" placeholder="默认" class="w-full text-sm p-1 border rounded">
@@ -299,6 +309,10 @@
                                 </div>
                              </div>
                         </div>
+                        <div class="mb-4">
+                            <label class="text-xs text-gray-500 block mb-1">字体名称 (Font Family)</label>
+                            <input type="text" id="homeTitleFont" list="fontFamilySuggestions" placeholder="默认字体" class="w-full text-sm p-1 border rounded">
+                        </div>
 
                         <div class="flex items-center justify-between mb-2">
                             <label for="hideSubtitleSwitch" class="cursor-pointer select-none text-gray-700 font-medium text-sm">隐藏副标题</label>
@@ -307,7 +321,7 @@
                                 <span class="slider round"></span>
                             </label>
                         </div>
-                        <div class="flex gap-2 items-center">
+                        <div class="flex gap-2 items-center mb-2">
                              <div class="flex-1">
                                 <label class="text-xs text-gray-500 block mb-1">字体大小 (px)</label>
                                 <input type="number" id="homeSubtitleSize" placeholder="默认" class="w-full text-sm p-1 border rounded">
@@ -319,6 +333,10 @@
                                     <input type="text" id="homeSubtitleColor" placeholder="跟随主题" class="flex-1 text-sm p-1 border rounded">
                                 </div>
                              </div>
+                        </div>
+                        <div class="mb-0">
+                            <label class="text-xs text-gray-500 block mb-1">字体名称 (Font Family)</label>
+                            <input type="text" id="homeSubtitleFont" list="fontFamilySuggestions" placeholder="默认字体" class="w-full text-sm p-1 border rounded">
                         </div>
                     </div>
 
@@ -333,7 +351,7 @@
                                 <span class="slider round"></span>
                             </label>
                         </div>
-                        <div class="flex gap-2 items-center">
+                        <div class="flex gap-2 items-center mb-2">
                              <div class="flex-1">
                                 <label class="text-xs text-gray-500 block mb-1">字体大小 (px)</label>
                                 <input type="number" id="homeStatsSize" placeholder="默认" class="w-full text-sm p-1 border rounded">
@@ -345,6 +363,10 @@
                                     <input type="text" id="homeStatsColor" placeholder="默认" class="flex-1 text-sm p-1 border rounded">
                                 </div>
                              </div>
+                        </div>
+                        <div class="mb-0">
+                            <label class="text-xs text-gray-500 block mb-1">字体名称 (Font Family)</label>
+                            <input type="text" id="homeStatsFont" list="fontFamilySuggestions" placeholder="默认字体" class="w-full text-sm p-1 border rounded">
                         </div>
                     </div>
 
@@ -359,7 +381,7 @@
                                 <span class="slider round"></span>
                             </label>
                         </div>
-                        <div class="flex gap-2 items-center">
+                        <div class="flex gap-2 items-center mb-2">
                              <div class="flex-1">
                                 <label class="text-xs text-gray-500 block mb-1">字体大小 (px)</label>
                                 <input type="number" id="homeHitokotoSize" placeholder="默认" class="w-full text-sm p-1 border rounded">
@@ -372,7 +394,25 @@
                                 </div>
                              </div>
                         </div>
+                        <div class="mb-0">
+                            <label class="text-xs text-gray-500 block mb-1">字体名称 (Font Family)</label>
+                            <input type="text" id="homeHitokotoFont" list="fontFamilySuggestions" placeholder="默认字体" class="w-full text-sm p-1 border rounded">
+                        </div>
                     </div>
+
+                    <datalist id="fontFamilySuggestions">
+                        <option value="sans-serif">Sans Serif (无衬线)</option>
+                        <option value="serif">Serif (衬线)</option>
+                        <option value="monospace">Monospace (等宽)</option>
+                        <option value="'Microsoft YaHei', sans-serif">微软雅黑</option>
+                        <option value="'SimSun', serif">宋体</option>
+                        <option value="'Segoe UI', sans-serif">Segoe UI</option>
+                        <option value="'Roboto', sans-serif">Roboto</option>
+                        <option value="'Open Sans', sans-serif">Open Sans</option>
+                        <option value="'Lato', sans-serif">Lato</option>
+                        <option value="'Noto Sans SC', sans-serif">Noto Sans SC</option>
+                        <option value="'Noto Serif SC', serif">Noto Serif SC</option>
+                    </datalist>
 
                 </div>
             </div>

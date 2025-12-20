@@ -160,6 +160,11 @@ export async function onRequest(context) {
   let homeHideHitokoto = false;
   let homeHitokotoSize = '';
   let homeHitokotoColor = '';
+  let homeCustomFontUrl = '';
+  let homeTitleFont = '';
+  let homeSubtitleFont = '';
+  let homeStatsFont = '';
+  let homeHitokotoFont = '';
   let homeSearchEngineEnabled = false;
   let layoutGridCols = '4';
   let layoutCustomWallpaper = '';
@@ -182,6 +187,7 @@ export async function onRequest(context) {
         'layout_hide_subtitle', 'home_subtitle_size', 'home_subtitle_color',
         'home_hide_stats', 'home_stats_size', 'home_stats_color',
         'home_hide_hitokoto', 'home_hitokoto_size', 'home_hitokoto_color',
+        'home_custom_font_url', 'home_title_font', 'home_subtitle_font', 'home_stats_font', 'home_hitokoto_font',
         'home_search_engine_enabled',
         'layout_grid_cols', 'layout_custom_wallpaper', 'layout_menu_layout',
         'layout_random_wallpaper', 'bing_country',
@@ -214,6 +220,12 @@ export async function onRequest(context) {
         if (row.key === 'home_hide_hitokoto') homeHideHitokoto = row.value === 'true';
         if (row.key === 'home_hitokoto_size') homeHitokotoSize = row.value;
         if (row.key === 'home_hitokoto_color') homeHitokotoColor = row.value;
+
+        if (row.key === 'home_custom_font_url') homeCustomFontUrl = row.value;
+        if (row.key === 'home_title_font') homeTitleFont = row.value;
+        if (row.key === 'home_subtitle_font') homeSubtitleFont = row.value;
+        if (row.key === 'home_stats_font') homeStatsFont = row.value;
+        if (row.key === 'home_hitokoto_font') homeHitokotoFont = row.value;
 
         if (row.key === 'home_search_engine_enabled') homeSearchEngineEnabled = row.value === 'true';
 
@@ -485,17 +497,18 @@ export async function onRequest(context) {
   const footerText = env.FOOTER_TEXT || '曾梦想仗剑走天涯';
 
   // Build Style Strings
-  const getStyleStr = (size, color) => {
+  const getStyleStr = (size, color, font) => {
     let s = '';
     if (size) s += `font-size: ${size}px;`;
     if (color) s += `color: ${color} !important;`;
+    if (font) s += `font-family: ${font} !important;`;
     return s ? `style="${s}"` : '';
   };
   
-  const titleStyle = getStyleStr(homeTitleSize, homeTitleColor);
-  const subtitleStyle = getStyleStr(homeSubtitleSize, homeSubtitleColor);
-  const statsStyle = getStyleStr(homeStatsSize, homeStatsColor);
-  const hitokotoStyle = getStyleStr(homeHitokotoSize, homeHitokotoColor);
+  const titleStyle = getStyleStr(homeTitleSize, homeTitleColor, homeTitleFont);
+  const subtitleStyle = getStyleStr(homeSubtitleSize, homeSubtitleColor, homeSubtitleFont);
+  const statsStyle = getStyleStr(homeStatsSize, homeStatsColor, homeStatsFont);
+  const hitokotoStyle = getStyleStr(homeHitokotoSize, homeHitokotoColor, homeHitokotoFont);
   const hitokotoContent = homeHideHitokoto ? '' : '疏影横斜水清浅,暗香浮动月黄昏。';
 
   // Determine if the stats row should be rendered with padding/margin
@@ -649,6 +662,12 @@ export async function onRequest(context) {
   if (layoutEnableFrostedGlass) {
       const cssVarInjection = `<style>:root { --frosted-glass-blur: ${layoutFrostedGlassIntensity}px; }</style>`;
       html = html.replace('</head>', `${cssVarInjection}</head>`);
+  }
+
+  const safeCustomFontUrl = sanitizeUrl(homeCustomFontUrl);
+  if (safeCustomFontUrl) {
+      const fontLink = `<link rel="stylesheet" href="${safeCustomFontUrl}">`;
+      html = html.replace('</head>', `${fontLink}</head>`);
   }
 
   // Inject Card CSS Variables

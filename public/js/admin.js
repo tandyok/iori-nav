@@ -1817,6 +1817,12 @@ const initSettings = () => {
   const homeHitokotoColorInput = document.getElementById('homeHitokotoColor');
   const homeHitokotoColorPicker = document.getElementById('homeHitokotoColorPicker');
 
+  const homeCustomFontUrlInput = document.getElementById('homeCustomFontUrl');
+  const homeTitleFontInput = document.getElementById('homeTitleFont');
+  const homeSubtitleFontInput = document.getElementById('homeSubtitleFont');
+  const homeStatsFontInput = document.getElementById('homeStatsFont');
+  const homeHitokotoFontInput = document.getElementById('homeHitokotoFont');
+
   const searchEngineSwitch = document.getElementById('searchEngineSwitch');
 
   // Preview Logic
@@ -1939,6 +1945,11 @@ const initSettings = () => {
     home_hitokoto_size: '',
     home_hitokoto_color: '',
     home_search_engine_enabled: false,
+    home_custom_font_url: '',
+    home_title_font: '',
+    home_subtitle_font: '',
+    home_stats_font: '',
+    home_hitokoto_font: '',
     layout_enable_frosted_glass: false,
     layout_frosted_glass_intensity: '15',
     layout_grid_cols: '4',
@@ -2350,6 +2361,12 @@ const initSettings = () => {
     currentSettings.home_hitokoto_size = homeHitokotoSizeInput.value.trim();
     currentSettings.home_hitokoto_color = homeHitokotoColorInput.value.trim();
 
+    currentSettings.home_custom_font_url = homeCustomFontUrlInput.value.trim();
+    currentSettings.home_title_font = homeTitleFontInput.value.trim();
+    currentSettings.home_subtitle_font = homeSubtitleFontInput.value.trim();
+    currentSettings.home_stats_font = homeStatsFontInput.value.trim();
+    currentSettings.home_hitokoto_font = homeHitokotoFontInput.value.trim();
+
     currentSettings.home_search_engine_enabled = searchEngineSwitch.checked;
 
     currentSettings.layout_custom_wallpaper = customWallpaperInput.value.trim();
@@ -2464,6 +2481,12 @@ const initSettings = () => {
             if (serverSettings.home_hide_hitokoto !== undefined) currentSettings.home_hide_hitokoto = serverSettings.home_hide_hitokoto === 'true';
             if (serverSettings.home_hitokoto_size) currentSettings.home_hitokoto_size = serverSettings.home_hitokoto_size;
             if (serverSettings.home_hitokoto_color) currentSettings.home_hitokoto_color = serverSettings.home_hitokoto_color;
+
+            if (serverSettings.home_custom_font_url) currentSettings.home_custom_font_url = serverSettings.home_custom_font_url;
+            if (serverSettings.home_title_font) currentSettings.home_title_font = serverSettings.home_title_font;
+            if (serverSettings.home_subtitle_font) currentSettings.home_subtitle_font = serverSettings.home_subtitle_font;
+            if (serverSettings.home_stats_font) currentSettings.home_stats_font = serverSettings.home_stats_font;
+            if (serverSettings.home_hitokoto_font) currentSettings.home_hitokoto_font = serverSettings.home_hitokoto_font;
 
             if (serverSettings.home_search_engine_enabled !== undefined) currentSettings.home_search_engine_enabled = serverSettings.home_search_engine_enabled === 'true';
 
@@ -2612,6 +2635,12 @@ const initSettings = () => {
             homeHitokotoColorPicker.value = currentSettings.home_hitokoto_color;
         }
     }
+
+    if (homeCustomFontUrlInput) homeCustomFontUrlInput.value = currentSettings.home_custom_font_url || '';
+    if (homeTitleFontInput) homeTitleFontInput.value = currentSettings.home_title_font || '';
+    if (homeSubtitleFontInput) homeSubtitleFontInput.value = currentSettings.home_subtitle_font || '';
+    if (homeStatsFontInput) homeStatsFontInput.value = currentSettings.home_stats_font || '';
+    if (homeHitokotoFontInput) homeHitokotoFontInput.value = currentSettings.home_hitokoto_font || '';
 
     if (searchEngineSwitch) searchEngineSwitch.checked = !!currentSettings.home_search_engine_enabled;
 
