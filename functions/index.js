@@ -713,10 +713,6 @@ export async function onRequest(context) {
   }
 
   // Inject Layout Config for Client-side JS
-  const cardCssVars = `<style>:root { --card-padding: 1.25rem; --card-radius: ${layoutCardBorderRadius}px; }</style>`;
-  html = html.replace('</head>', `${cardCssVars}</head>`);
-
-  // Inject Layout Config for Client-side JS
   const layoutConfigScript = `
     <script>
       window.IORI_LAYOUT_CONFIG = {
